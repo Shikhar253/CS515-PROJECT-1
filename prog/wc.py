@@ -3,7 +3,7 @@ import argparse
 
 def count_words_chars_lines(input_text):
     lines = input_text.split('\n')
-    num_lines = len(lines)
+    num_lines = len([line for line in lines if line.strip()])  # Count non-empty lines
     num_words = sum(len(line.split()) for line in lines)
     num_chars = len(input_text)
     return num_chars, num_words, num_lines
