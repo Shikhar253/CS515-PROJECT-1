@@ -29,4 +29,6 @@ jobs:
         file prog/gron.py
 
     - name: Run tests
-      run: python test.py
+      run: |
+        chmod +x prog/gron.py  # Ensure executable permissions
+        python test.py
