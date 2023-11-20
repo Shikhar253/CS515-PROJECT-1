@@ -9,7 +9,7 @@
 - [Test Harness](https://github.com/Shikhar253/CS515-PROJECT-1)
 
 ## Time Spent
-- A lot!!
+- Around 30hrs
 
 ## Description
 This project implements a Python utility that mimics the behavior of the `wc` command in Unix systems. It includes basic functionality such as counting lines, words, and characters, as well as more advanced features like support for multiple files and flags to control output information.
