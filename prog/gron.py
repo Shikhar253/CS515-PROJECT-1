@@ -12,11 +12,14 @@ def flatten_json(json_obj, base_object, parent_key='', separator='.'):
         else:
             flattened[new_key] = value
     return flattened
-
+    
 def print_flattened_json(flattened_json, base_object):
     print(f"{base_object} = {{}};")
     for key, value in flattened_json.items():
-        print(f"{base_object}{key} = {json.dumps(value)};")
+        if isinstance(value, str):
+            # If the value is a string, enclose it in double quotes
+            value = f'"{value}"'
+        print(f"{base_object}{key} = {value};")
 
 def main():
     parser = argparse.ArgumentParser(description='JSON flattening utility')
