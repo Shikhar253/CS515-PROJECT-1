@@ -12,7 +12,7 @@ def flatten_json(json_obj, base_object, parent_key='', separator='.'):
         else:
             flattened[new_key] = value
     return flattened
-    
+
 def print_flattened_json(flattened_json, base_object):
     print(f"{base_object} = {{}};")
     for key, value in flattened_json.items():
@@ -25,7 +25,7 @@ def main():
     parser = argparse.ArgumentParser(description='JSON flattening utility')
     parser.add_argument('--obj', type=str, default='json', help='Base object name')
     parser.add_argument('files', nargs='*', help='Input files')
-    
+
     args = parser.parse_args()
 
     try:
