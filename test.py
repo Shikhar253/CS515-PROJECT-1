@@ -10,9 +10,13 @@ def run_test(program, test_name, input_filename, expected_output_filename):
     input_file_path = os.path.join('test', f'{program}.{test_name}.in')
     expected_output_file_path = os.path.join('test', f'{program}.{test_name}.out')
     arg_expected_output_file_path = os.path.join('test', f'{program}.{test_name}.arg.out')
+    
+    if(program=="gron"):
+        program_path = os.path.join('prog', 'gron.py')
+        process = subprocess.Popen([program_path], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    else:
+        process = subprocess.Popen([program], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
-    # Run the program on input from the file
-    process = subprocess.Popen([program], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     with open(input_file_path, 'r') as input_file:
         program_output, _ = process.communicate(input=input_file.read().encode('utf-8'))
 
