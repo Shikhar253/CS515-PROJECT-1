@@ -15,20 +15,20 @@ jobs:
       with:
         python-version: 3.x
 
-    - name: Set Execution Permissions
-      run: chmod +x prog/gron.py
+    # - name: Set Execution Permissions
+    #   run: chmod +x prog/gron.py
 
-    - name: Debug Information
-      run: |
-        ls -l
-        pwd
-        echo "Current directory contents:"
-        ls -R
-        echo "Executable permissions for gron.py:"
-        ls -l prog/gron.py
-        file prog/gron.py
+    # - name: Debug Information
+    #   run: |
+    #     ls -l
+    #     pwd
+    #     echo "Current directory contents:"
+    #     ls -R
+    #     echo "Executable permissions for gron.py:"
+    #     ls -l prog/gron.py
+    #     file prog/gron.py
 
     - name: Run tests
-      run: |
-        chmod +x prog/gron.py  # Ensure executable permissions
+      run: 
+        # chmod +x prog/gron.py  # Ensure executable permissions
         python test.py

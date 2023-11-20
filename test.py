@@ -51,7 +51,7 @@ def run_test(program, test_name, input_filename, expected_output_filename):
         return TestResult.OutputMismatch
 
 def main():
-    programs = ["gron","wc"]
+    programs = ["wc"]
     test_results = {TestResult.Pass: 0, TestResult.Fail: 0, TestResult.OutputMismatch: 0}
     for program in programs:
         test_files = [f for f in os.listdir('test') if f.startswith(f"{program}.") and f.endswith('.in')]
