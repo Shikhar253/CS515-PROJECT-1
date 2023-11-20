@@ -13,7 +13,20 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: 3.x  
+        python-version: 3.x
+
+    - name: Set Execution Permissions
+      run: chmod +x prog/gron.py
+
+    - name: Debug Information
+      run: |
+        ls -l
+        pwd
+        echo "Current directory contents:"
+        ls -R
+        echo "Executable permissions for gron.py:"
+        ls -l prog/gron.py
+        file prog/gron.py
 
     - name: Run tests
       run: python test.py
