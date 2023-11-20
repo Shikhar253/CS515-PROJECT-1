@@ -11,17 +11,11 @@ def run_test(program, test_name, input_filename, expected_output_filename):
     expected_output_file_path = os.path.join('test', f'{program}.{test_name}.out')
     arg_expected_output_file_path = os.path.join('test', f'{program}.{test_name}.arg.out')
     
-    if program == "gron":
+    if(program=="gron"):
         program_path = os.path.join('prog', 'gron.py')
-    elif program == "wc":
-        program_path = os.path.join('prog', 'wc.py')
-    elif program == "csv_sum":
-        program_path = os.path.join('prog', 'csv_sum.py')
+        process = subprocess.Popen([program_path], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     else:
-        print(f"Unsupported program: {program}")
-        return TestResult.Fail
-
-    process = subprocess.Popen([program_path], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        process = subprocess.Popen([program], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
     with open(input_file_path, 'r') as input_file:
         program_output, _ = process.communicate(input=input_file.read().encode('utf-8'))
@@ -32,7 +26,7 @@ def run_test(program, test_name, input_filename, expected_output_filename):
 
     if program_output.decode('utf-8') == expected_output:
         # First test passed, now run with a command-line argument
-        process = subprocess.Popen([program_path, input_file_path], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        process = subprocess.Popen([program, input_file_path], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         program_output_arg, _ = process.communicate()
 
         # Check if the argument output matches the expected argument output
@@ -57,7 +51,7 @@ def run_test(program, test_name, input_filename, expected_output_filename):
         return TestResult.OutputMismatch
 
 def main():
-    programs = [ "wc", "csv_sum"]
+    programs = ["wc","csv_sum"]
     test_results = {TestResult.Pass: 0, TestResult.Fail: 0, TestResult.OutputMismatch: 0}
     for program in programs:
         test_files = [f for f in os.listdir('test') if f.startswith(f"{program}.") and f.endswith('.in')]

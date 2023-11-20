@@ -1,3 +1,4 @@
+
 name: Run Tests
 
 on: [push]
@@ -15,27 +16,20 @@ jobs:
       with:
         python-version: 3.x
 
-    - name: Set Execution Permissions for wc.py
-      run: chmod +x prog/wc.py
+    # - name: Set Execution Permissions
+    #   run: chmod +x prog/gron.py
 
-    - name: Set Execution Permissions for gron.py
-      run: chmod +x prog/gron.py
-
-    - name: Debug Information
-      run: |
-        ls -l
-        pwd
-        echo "Current directory contents:"
-        ls -R
-        echo "Executable permissions for wc.py:"
-        ls -l prog/wc.py
-        file prog/wc.py
-        echo "Executable permissions for gron.py:"
-        ls -l prog/gron.py
-        file prog/gron.py
+    # - name: Debug Information
+    #   run: |
+    #     ls -l
+    #     pwd
+    #     echo "Current directory contents:"
+    #     ls -R
+    #     echo "Executable permissions for gron.py:"
+    #     ls -l prog/gron.py
+    #     file prog/gron.py
 
     - name: Run tests
-      run: |
-        chmod +x prog/wc.py  # Ensure executable permissions
-        chmod +x prog/gron.py  # Ensure executable permissions
+      run: 
+        # chmod +x prog/gron.py  # Ensure executable permissions
         python test.py
