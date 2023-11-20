@@ -46,13 +46,13 @@ def main():
 
     except FileNotFoundError as e:
         print(f"wc: {e.filename}: No such file or directory")
-        sys.exit(1)  # Exit with non-zero status for error
+        sys.exit(1) 
 
     except Exception as e:
         print(f"wc: An unexpected error occurred: {e}")
-        sys.exit(1)  # Exit with non-zero status for error
+        sys.exit(1) 
 
-    sys.exit(0)  # Exit with status 0 for successful execution
+    sys.exit(0) 
 
 if __name__ == '__main__':
     main()
